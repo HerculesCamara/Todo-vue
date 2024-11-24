@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main id="app">
+        <h1>To-do List</h1>
+
+        <button 
+            @click="removeAll()"
+            v-if="todo"
+        >
+            Clean All
+        </button>
+
+        <div>
+            <input type="text" placeholder="Type the task" v-model="newTodo.task"/>
+            <input type="button" value="Add" @click="addTodo()" :disabled="!newTodo" />
+        </div>
+
+        <div v-for="(todo, index) in todos">
+            <div class="task" v-if="todo.task">
+                <p>{{ todo.task }}</p>
+                <button @click="removeTodo(index)">Remove</button>
+            </div>
+        </div>
+    </main>
+
+
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
